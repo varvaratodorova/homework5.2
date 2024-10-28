@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double numerator = GetValidNumber("Введіть чисельник:");
+        double denominator = GetValidNumber("Введіть знаменник:");
+
+        if (denominator == 0)
+        {
+            Console.WriteLine("Помилка: на нуль ділимо не можна!");
+        }
+        else
+        {
+            double result = numerator / denominator;
+            Console.WriteLine($"Результат: {result}");
+        }
+
+        Console.WriteLine("Натисніть Enter, щоб вийти.");
+        Console.ReadLine(); 
+    }
+
+    static double GetValidNumber(string message)
+    {
+        double number;
+        while (true)
+        {
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+
+            if (double.TryParse(input, out number))
+            {
+                return number; 
+            }
+            else
+            {
+                Console.WriteLine("Помилка: введіть коректне число.");
+            }
+        }
+    }
+}
